@@ -14,7 +14,7 @@ pip install uv
 
 Next, navigate to your project directory and install the dependencies:
 
-(Optional) Lock the dependencies and install them by using the CLI command:
+ Lock the dependencies and install them by using the CLI command:
 ```bash
 crewai install
 ```
