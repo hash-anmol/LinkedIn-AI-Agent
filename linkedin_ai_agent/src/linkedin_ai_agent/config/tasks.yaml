@@ -1,0 +1,170 @@
+# LinkedIn AI Agent - 4-Agent Content Creation Workflow
+# Sequential tasks for LinkedIn content creation with style matching priority
+
+brainstorming_task:
+  description: >
+    Conduct an intelligent brainstorming conversation with the user about their content idea: "{initial_idea}".
+    
+   Your conversation style:
+   1. Your conversation should be natural and conversational
+   2. Your style of talking should exactly match the user's writing and speaking style as it is. As if the user is having a self talk, talking to himself.
+   3. You should be very helpful, smart with questions and insightful.
+
+
+    Your conversation should:
+    1. Ask strategic questions to understand the target audience, content goals, and key messages
+    2. Integrate real-time web search to find current facts, statistics, and trends related to the topic
+    3. Help refine and expand the initial idea into a comprehensive content concept
+    4. Identify and document the user's writing style preferences through natural conversation
+    5. Capture specific style elements like tone, voice, structure preferences, and unique expressions
+    6. Ensure you understand the user's LinkedIn content goals and audience engagement strategy
+    
+    Focus Areas:
+    - How should the hook be structured? (Do you want it to start with a question, a controversial statement, a statistic, a personal story, a problem, a solution, a challenge, a promise, etc...)
+    - Target audience analysis and pain points. And also check if the users idea is matching the given target audience's pain points and interests, whatever you think, tell the user.
+    - Content positioning and unique angle
+    - Key messages and the value proposition
+    - Personal experiences of the user and stories to share
+    - If any Supporting research and credible data is needed, ask the user for it. If yes, then search for it and add it to the brief.
+    - User's authentic writing style documentation
+    - LinkedIn-specific optimization opportunities
+    - If the topic of the post is something related to a major problem, prediction or some serious awakeing stuff, the ask the user if there is something controversial but credible positions they can take.
+
+    
+    Conduct this as a natural conversation, asking follow-up questions based on user responses.
+    
+  expected_output: >
+    A comprehensive content brief, try to quote the user's sentences and paragraphs as it is in a structured way, to preserve the user's voice, for the rest of the agents to use as a reference, that includes:
+    - Refined topic with clear positioning and unique angle
+    - Target audience analysis with specific pain points, interests and what in the user's idea is matching the given target audience's pain points and interests.
+    - Key messages and value propositions to communicate
+    - Supporting research data, statistics, and current trends. (If any)
+    - Detailed user writing style profile with specific patterns, tone, and voice characteristics
+    - Any extra information that the user has shared, that you think is relevant to the content.
+    - Clear handoff instructions for the next agent with complete style specifications
+    
+  agent: brainstorming_agent
+
+hook_generation_task:
+  description: >
+    Using the comprehensive content brief from the brainstorming session, create compelling LinkedIn hooks that will stop the scroll and drive engagement.
+    
+    Key Requirements:
+    1. Generate 3-5 different hook variations that perfectly match the user's documented writing style
+    2. Each hook should reflect the user's authentic voice, tone, and expression patterns
+    3. Hooks must align with the target audience and content positioning from the brief
+    4. Incorporate relevant research findings or statistics when appropriate
+    5. Optimize for LinkedIn's algorithm and user behavior patterns
+    6. Ensure hooks feel completely natural and authentic to the user's style
+    
+    Hook Types to Consider:
+    - Question-based hooks that engage audience curiosity
+    - Statistical or data-driven hooks that establish credibility
+    - Personal story or experience hooks for relatability
+    - Contrarian or thought-provoking hooks for discussion
+    - Problem-solution hooks that address audience pain points
+    
+  expected_output: >
+    3-5 compelling LinkedIn hook options that:
+    - Perfectly match the user's authentic writing style and voice
+    - Are optimized for maximum engagement and algorithm performance
+    - Align with the content strategy and target audience from the brief
+    - Include brief explanations of why each hook would be effective
+    - Provide a recommended primary hook with style-matching rationale
+    - Complete handoff package for the structure agent with style consistency notes
+    
+  agent: hook_agent
+  context: 
+    - brainstorming_task
+
+structure_generation_task:
+  description: >
+    Create an optimal post structure that organizes the content for maximum impact while preserving the user's natural writing patterns.
+    
+    Using the content brief and selected hook, design a post structure that:
+    1. Reflects the user's documented style preferences and natural posting patterns
+    2. Organizes the key messages into a logical, engaging flow
+    3. Incorporates the selected hook seamlessly into the overall narrative
+    4. Includes appropriate sections for supporting research and data
+    5. Follows LinkedIn best practices for readability and engagement
+    6. Maintains the user's authentic voice throughout the structure
+    
+    Structure Elements to Include:
+    - Opening hook placement and transition
+    - Main content sections with logical flow
+    - Supporting evidence and research integration points
+    - Engagement elements (questions, calls-to-action)
+    - Conclusion and key takeaway positioning
+    - Visual formatting recommendations (emojis, spacing, etc.)
+    
+  expected_output: >
+    A detailed post structure outline that includes:
+    - Complete section-by-section breakdown with content guidance
+    - Hook integration and smooth transitions between sections
+    - Specific placement recommendations for research data and statistics
+    - Style consistency guidelines for each section
+    - LinkedIn formatting best practices adapted to user's style
+    - Raw structure that user can review and modify before content writing
+    - Clear handoff instructions for final content creation with style specifications
+    
+  agent: structure_agent
+  context: 
+    - brainstorming_task
+    - hook_generation_task
+
+content_writing_task:
+  description: >
+    Write the final LinkedIn post that perfectly matches the user's authentic style while delivering maximum value to the target audience.
+    
+    Using the comprehensive brief, selected hook, and approved structure, create content that:
+    1. Replicates the user's exact writing style, tone, and voice patterns
+    2. Follows the approved structure while maintaining natural flow
+    3. Incorporates all key messages and supporting research seamlessly
+    4. Optimizes for LinkedIn engagement while preserving authenticity
+    5. Includes appropriate formatting, spacing, and visual elements
+    6. Feels completely indistinguishable from content the user would write themselves
+    
+    Quality Standards:
+    - Perfect style matching - content should sound exactly like the user
+    - All key points from the brief must be included naturally
+    - Research and data should be integrated smoothly into the narrative
+    - LinkedIn best practices followed without compromising authentic voice
+    - Engagement optimization through strategic questions and calls-to-action
+    - Professional formatting that matches user's posting style
+    
+  expected_output: >
+    A complete, publication-ready LinkedIn post that:
+    - Is written in the user's exact authentic style and voice
+    - Incorporates the selected hook and follows the approved structure
+    - Includes all key messages and supporting research from the brief
+    - Is optimized for LinkedIn engagement while maintaining authenticity
+    - Features proper formatting, spacing, and visual elements as appropriate
+    - Includes strategic engagement elements (questions, CTAs) in the user's style
+    - Requires no further editing - ready for immediate publication
+    - Demonstrates perfect style matching that is indistinguishable from user's original writing
+    
+  agent: content_writing_agent
+  context: 
+    - brainstorming_task
+    - hook_generation_task
+    - structure_generation_task
+  output_file: linkedin_post.md
+
+# Legacy tasks (keeping for reference but not used in main workflow)
+research_task:
+  description: >
+    Conduct a thorough research about {topic}
+    Make sure you find any interesting and relevant information given
+    the current year is {current_year}.
+  expected_output: >
+    A list with 10 bullet points of the most relevant information about {topic}
+  agent: researcher
+
+reporting_task:
+  description: >
+    Review the context you got and expand each topic into a full section for a report.
+    Make sure the report is detailed and contains any and all relevant information.
+  expected_output: >
+    A fully fledged report with the main topics, each with a full section of information.
+    Formatted as markdown without '```'
+  agent: reporting_analyst
