@@ -3,5 +3,6 @@ description:
 globs: 
 alwaysApply: true
 ---
-- Use context7 MCP always to get crew AI docs to know for sure what you are doing is in a correct way as per the documentation
+- Use context7 MCP always to get documnetation to know for sure what you are doing is in a correct way as per the documentation
+- Use Brave Search MCPs for complex internet searches
 

@@ -656,6 +656,12 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/6e/72/db45626973027c992df75cbc7ef391f18393d631be3bceb6388c1b9f01e1/crewai_tools-0.45.0-py3-none-any.whl", hash = "sha256:9dd34e4792c075ee7a72134aedaab268e78d0e350114fd7fe2426e691c5f52a3", size = 602659, upload-time = "2025-05-14T18:51:49.077Z" },
 ]
 
+[package.optional-dependencies]
+mcp = [
+    { name = "mcp" },
+    { name = "mcpadapt" },
+]
+
 [[package]]
 name = "cryptography"
 version = "45.0.3"
@@ -1796,6 +1802,7 @@ dependencies = [
     { name = "anthropic" },
     { name = "beautifulsoup4" },
     { name = "crewai", extra = ["tools"] },
+    { name = "crewai-tools", extra = ["mcp"] },
     { name = "mcp" },
     { name = "pydantic" },
     { name = "python-dotenv" },
@@ -1809,6 +1816,7 @@ requires-dist = [
     { name = "anthropic", specifier = ">=0.52.0" },
     { name = "beautifulsoup4", specifier = ">=4.12.0" },
     { name = "crewai", extras = ["tools"], specifier = ">=0.11.0,<1.0.0" },
+    { name = "crewai-tools", extras = ["mcp"], specifier = ">=0.45.0" },
     { name = "mcp", specifier = ">=1.9.2" },
     { name = "pydantic", specifier = ">=2.5.0" },
     { name = "python-dotenv", specifier = ">=1.0.0" },
@@ -1963,6 +1971,21 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/ea/03/77c49cce3ace96e6787af624611b627b2828f0dca0f8df6f330a10eea51e/mcp-1.9.2.tar.gz", hash = "sha256:3c7651c053d635fd235990a12e84509fe32780cd359a5bbef352e20d4d963c05", size = 333066, upload-time = "2025-05-29T14:42:17.76Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/5d/a6/8f5ee9da9f67c0fd8933f63d6105f02eabdac8a8c0926728368ffbb6744d/mcp-1.9.2-py3-none-any.whl", hash = "sha256:bc29f7fd67d157fef378f89a4210384f5fecf1168d0feb12d22929818723f978", size = 131083, upload-time = "2025-05-29T14:42:16.211Z" },
+]
+
+[[package]]
+name = "mcpadapt"
+version = "0.1.9"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "jsonref" },
+    { name = "mcp" },
+    { name = "pydantic" },
+    { name = "python-dotenv" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/9e/68/85c0946d567088d8d55f1c30cb942bcfec2585941a3f45b790e423b994c8/mcpadapt-0.1.9.tar.gz", hash = "sha256:03e601c4c083f3f4eb178e6a6bcd157bcb45e25c140ea0895567bab346b67645", size = 3540887, upload-time = "2025-05-24T19:40:35.823Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/83/78/0310684763e5753a3a8128dab6c87ba1e20dd907b696680592bebebc84b6/mcpadapt-0.1.9-py3-none-any.whl", hash = "sha256:9f2a6ad1155efdf1a43c11e8449ae9258295c4e140c3c6ff672983a8ac8bde33", size = 17469, upload-time = "2025-05-24T19:40:34.055Z" },
 ]
 
 [[package]]
